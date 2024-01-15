@@ -24,16 +24,22 @@
           <h4>&nbsp;</h4>
           <div class="popover">
             <ul>
-              {% for state in states %}
               <li>
-          <h2>{{ state[0].name }}:</h2>
-          <ul>
-            {% for city in state[1] %}
-            <li>{{ city.name }}</li>
-            {% endfor %}
-          </ul>
+                <input type="checkbox" data-id="{{states.id}}" data-name="{{states.name}}">
+                Paris
               </li>
-              {% endfor %}
+              <li>
+                <input type="checkbox" data-id="{{states.id}}" data-name="{{states.name}}">
+                Belgique
+              </li>
+              <li>
+                <input type="checkbox" data-id="{{states.id}}" data-name="{{states.name}}">
+                France
+              </li>
+              <li>
+                <input type="checkbox" data-id="{{states.id}}" data-name="{{states.name}}">
+                Espagne
+              </li>
             </ul>
           </div>
         </div>
@@ -42,12 +48,22 @@
           <h4>&nbsp;</h4>
           <div class="popover">
             <ul>
-              {% for amenity in amenities %}
               <li>
                 <input type="checkbox" data-id="{{amenity.id}}" data-name="{{amenity.name}}">
-                {{ amenity.name }}
+                Cable TV
               </li>
-              {% endfor %}
+              <li>
+                <input type="checkbox" data-id="{{amenity.id}}" data-name="{{amenity.name}}">
+                Breakfast
+              </li>
+              <li>
+                <input type="checkbox" data-id="{{amenity.id}}" data-name="{{amenity.name}}">
+                Cats(s)
+              </li>
+              <li>
+                <input type="checkbox" data-id="{{amenity.id}}" data-name="{{amenity.name}}">
+                Dog(s)
+              </li>
             </ul>
           </div>
         </div>
