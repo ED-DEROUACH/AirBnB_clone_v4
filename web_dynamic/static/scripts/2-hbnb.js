@@ -1,25 +1,24 @@
-const $ = window.$;
-$(function () {
-  const lili = {};
-  function check () {
-    $('div.amenities li input').map(function () {
+$( document ).ready(function () {
+  let ls_amen = [];
+  $('input[type=checkbox]').change (function () {
+    let name = $(this).attr('data-name');
       if ($(this).is(':checked')) {
-        lili[($(this).attr('data-id'))] = $(this).attr('data-name');
+    ls_amen.push(name);
       } else {
-        delete lili[($(this).attr('data-id'))];
+    ls_amen = ls_amen.filter(amen => amen !== name);
       }
-      $('div.amenities h4').html(Object.values(lili).join(', ') || ' ');
-    });
-  }
-  check();
-  $('div.amenities li input').change(function () {
-    check();
+    $('.amenities h4').text(ls_amen.join(', '));
   });
-  $.getJSON('http://0.0.0.0:5001/api/v1/status/', (data) => {
-    if (data.status === 'OK') {
-      $('DIV#api_status').addClass('available');
-    } else {
-      $('DIV#api_status').removeClass('available');
+  $.ajax({
+    type: 'GET',
+    url: 'http://0.0.0.0:5001/api/v1/status/',
+    dataType: 'json',
+    success: function (data) {
+      if (data.status === 'OK') {
+    $('#api_status').addClass('available');
+      } else {
+    $('#api_status').removeClass('available');
+      }
     }
   });
 });
